@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "khushal975/flask-app"
-        CONTAINER_REGISTRY = "docker.io" // Change if using a private registry
+        CONTAINER_REGISTRY = "docker.io" // Change if using a private registryy
     }
     options {
         timestamps() // Adds timestamps to logs
