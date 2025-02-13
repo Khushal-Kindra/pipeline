@@ -23,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'docker run $IMAGE_NAME echo "Test successful!"'
+                sh 'docker -d -p 5001:5000 run $IMAGE_NAME echo "Test successful!"'
             }
         }
         stage('Push Image') {
