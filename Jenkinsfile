@@ -8,12 +8,12 @@ pipeline {
         timestamps() // Adds timestamps to logs
     }
     stages {
-        stage('Remove Existing Container') {
-            steps {
-                sh 'docker stop xyz || true'
-                sh 'docker rm xyz || true'
-            }
-        }
+        // stage('Remove Existing Container') {
+        //     steps {
+        //         sh 'docker stop xyz || true'
+        //         sh 'docker rm xyz || true'
+        //     }
+        // }
         stage('Build') {
             steps {
                 echo 'Building the Docker image...'
