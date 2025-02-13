@@ -40,7 +40,7 @@ pipeline {
                 echo 'Pulling and Running the Docker Image to Verify...'
                 sh 'docker rmi -f $IMAGE_NAME || true' // Remove local image to test pulling
                 sh 'docker pull $IMAGE_NAME'
-                sh 'docker run $IMAGE_NAME --name xyz echo "Image Pulled and Running Successfully!"'
+                sh 'docker run --name $IMAGE_NAME xyz echo "Image Pulled and Running Successfully!"'
             }
         }
     }
