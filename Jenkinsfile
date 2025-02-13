@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Remove Existing Container') {
             steps {
+                sh 'docker stop xyz || true'
                 sh 'docker rm xyz || true'
             }
         }
