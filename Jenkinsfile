@@ -41,7 +41,7 @@ pipeline {
                 echo 'Pulling and Running the Docker Image to Verify...'
                 // sh 'docker image rm $IMAGE_NAME || true' // Remove local image to test pulling
                 // sh 'docker pull $IMAGE_NAME'
-                sh 'docker run -d --name nuha -p 5004:5000 $IMAGE_NAME'
+                sh 'docker run -d --name xyz -p 5004:5000 $IMAGE_NAME'
             }
         }
     }
