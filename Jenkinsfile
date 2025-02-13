@@ -8,6 +8,11 @@ pipeline {
         timestamps() // Adds timestamps to logs
     }
     stages {
+        stage('Remove Existing Container') {
+            steps {
+                sh 'docker rm xyz'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building the Docker image...'
@@ -17,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'docker run --rm $IMAGE_NAME echo "Test successful!"'
+                sh 'docker run $IMAGE_NAME echo "Test successful!"'
             }
         }
         stage('Push Image') {
@@ -35,16 +40,16 @@ pipeline {
                 echo 'Pulling and Running the Docker Image to Verify...'
                 sh 'docker rmi -f $IMAGE_NAME || true' // Remove local image to test pulling
                 sh 'docker pull $IMAGE_NAME'
-                sh 'docker run --rm $IMAGE_NAME echo "Image Pulled and Running Successfully!"'
+                sh 'docker run $IMAGE_NAME --name xyz echo "Image Pulled and Running Successfully!"'
             }
         }
     }
     post {
         success {
-            echo 'Pipeline executed successfully! 🎉'
+            echo 'Pipeline executed successfully!'
         }
         failure {
-            echo 'Pipeline execution failed! ❌'
+            echo 'Pipeline execution failed!'
         }
     }
 }
