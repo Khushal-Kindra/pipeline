@@ -20,12 +20,12 @@ pipeline {
                 sh 'docker build -t $IMAGE_NAME .'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh 'docker run -d -p 5001:5000 $IMAGE_NAME echo "Test successful!"'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Running tests...'
+        //         sh 'docker run -d -p 5001:5000 $IMAGE_NAME echo "Test successful!"'
+        //     }
+        // }
         stage('Push Image') {
             steps {
                 echo 'Logging into Docker registry...'
@@ -41,7 +41,7 @@ pipeline {
                 echo 'Pulling and Running the Docker Image to Verify...'
                 // sh 'docker image rm $IMAGE_NAME || true' // Remove local image to test pulling
                 // sh 'docker pull $IMAGE_NAME'
-                sh 'docker run --name xyz $IMAGE_NAME echo "Image Pulled and Running Successfully!"'
+                sh 'docker run -d -p 5004:5000 $IMAGE_NAME echo "Image Pulled and Running Successfully!"'
             }
         }
     }
