@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Remove Existing Container') {
             steps {
-                sh 'docker rm xyz'
+                sh 'docker rm xyz || true'
             }
         }
         stage('Build') {
